@@ -31,12 +31,25 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+
+    'grappelli',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'crispy_forms',
+    'app_rest_framework.apps.AppRestFrameworkConfig',
+
+    'app_bootstrap_examples.apps.AppBootstrapExamplesConfig',
+    'app_ecommerse.apps.AppEcommerseConfig',
+    'app_news.apps.AppNewsConfig',
+    'app_react.apps.AppReactConfig',
+    'app_web.apps.AppWebConfig',
+    'app_wheather.apps.AppWheatherConfig',
 ]
 
 MIDDLEWARE = [
@@ -105,9 +118,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Etc/GMT-6'
 
 USE_I18N = True
 
@@ -122,10 +135,10 @@ USE_TZ = True
 STATIC_ROOT = Path(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 
-
 # STATICFILES_DIRS = [Path(BASE_DIR, 'static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT = Path(BASE_DIR, 'static/media')
+MEDIA_ROOT = Path(BASE_DIR, 'static', 'media')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
