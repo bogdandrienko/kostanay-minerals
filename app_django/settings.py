@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'app_web.apps.AppWebConfig',
     'app_wheather.apps.AppWheatherConfig',
 
-    # 'movies.apps.MoviesConfig',
     'app_movies.apps.AppMoviesConfig',
 
     
@@ -143,14 +142,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = Path(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
-# STATIC_DIR = Path(BASE_DIR, 'static')
-STATIC_ROOT = Path(BASE_DIR, 'static')
+
+
 # STATICFILES_DIRS = [Path(BASE_DIR, 'static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = Path(BASE_DIR, 'static', 'media')
+MEDIA_ROOT = Path(BASE_DIR, 'static/media')
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
