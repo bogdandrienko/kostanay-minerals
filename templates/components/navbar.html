@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">ГЛАВНАЯ</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -10,8 +9,7 @@
                 <div class="col-md-auto mx-auto d-flex align-items-end">
                     <div class="space-between">
                         <li class="navbar navbar-expand-lg navbar-dark dropdown bg-dark nav-item font-weight-bold">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" 
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             development
                                 <span class="badge badge-primary badge-pill">
                                     # 6
@@ -27,12 +25,16 @@
                                     <a class="dropdown-item" href="{% url 'examples' %}">app_bootstrap_examples</a>
                                     <a class="dropdown-item" href="{% url 'movies' %}">app_movies</a>
                                 </li>
-                                <li><hr class="dropdown-divider text-light"></li>
+                                <li>
+                                    <hr class="dropdown-divider text-light">
+                                </li>
                                 <li>
                                     <h6 class="dropdown-header">В разработке</h6>
                                     <a class="dropdown-item disabled" href="#">none</a>
                                 </li>
-                                <li><hr class="dropdown-divider text-light"></li>
+                                <li>
+                                    <hr class="dropdown-divider text-light">
+                                </li>
                                 <li>
                                     <h6 class="dropdown-header">Шаблоны</h6>
                                     <a class="dropdown-item" href="{% url 'custom' %}">custom</a>
@@ -44,8 +46,7 @@
                 <div class="col-md-auto mx-auto d-flex align-items-end">
                     <div class="space-between">
                         <li class="navbar navbar-expand-lg navbar-dark dropdown bg-dark nav-item font-weight-bold">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" 
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             production
                                 <span class="badge badge-primary badge-pill">
                                     # 0
@@ -54,28 +55,47 @@
                             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="">
                                 <li>
                                     <h6 class="dropdown-header">Основной функционал</h6>
-                                    <a class="dropdown-item" href="{% url 'home' %}">главная</a>
-                                    <a class="dropdown-item" href="{% url 'admin' %}">админ панель</a>
+                                    <a class="dropdown-item" href="{% url 'home' %}">Главная страница</a>
+                                    <a class="dropdown-item" href="{% url 'admin' %}">Панель Администрации</a>
+                                    <a class="dropdown-item" href="{% url 'signup' %}">Аккаунт: создать</a>
+                                    <a class="dropdown-item" href="{% url 'login' %}">Аккаунт: войти
+                                        {% if request.user.is_authenticated %}
+                                            [вы уже вошли в аккаунт]
+                                        {% endif %}
+                                    </a>
+                                    <a class="dropdown-item" href="{% url 'signout' %}">Аккаунт: выйти 
+                                        {% if request.user.is_authenticated %}
+                                            [{{ request.user.first_name }}]
+                                        {% else %}
+                                            [вы не вошли в аккаунт]    
+                                        {% endif %}
+                                    </a>
                                     <a class="dropdown-item disabled" href="#">личный кабинет</a>
                                     <a class="dropdown-item disabled" href="#">мои уведомления</a>
                                     <a class="dropdown-item disabled" href="#">мои достижения</a>
                                 </li>
-                                <li><hr class="dropdown-divider text-light"></li>
+                                <li>
+                                    <hr class="dropdown-divider text-light">
+                                </li>
                                 <li>
                                     <h6 class="dropdown-header">Управление проектами</h6>
-                                    <a class="dropdown-item disabled" href="#">Рационализаторство: список</a>
-                                    <a class="dropdown-item disabled" href="#">Рационализаторство: добавить</a>
+                                    <a class="dropdown-item" href="{% url 'rational' %}">Рационализаторство: список</a>
+                                    <a class="dropdown-item" href="{% url 'rational_create' %}">Рационализаторство: добавить</a>
                                     <a class="dropdown-item disabled" href="#">Рационализаторство: шаблоны</a>
                                     <a class="dropdown-item disabled" href="#">Бережливое производство: список</a>
                                     <a class="dropdown-item disabled" href="#">Бережливое производство: добавить</a>
                                     <a class="dropdown-item disabled" href="#">Бережливое производство: шаблоны</a>
                                 </li>
-                                <li><hr class="dropdown-divider text-light"></li>
+                                <li>
+                                    <hr class="dropdown-divider text-light">
+                                </li>
                                 <li>
                                     <h6 class="dropdown-header">Служба управления персоналом</h6>
                                     <a class="dropdown-item disabled" href="#">Выгрузка отпусков</a>
                                 </li>
-                                <li><hr class="dropdown-divider text-light"></li>
+                                <li>
+                                    <hr class="dropdown-divider text-light">
+                                </li>
                                 <li>
                                     <h6 class="dropdown-header">Шаблоны</h6>
                                     <a class="dropdown-item disabled" href="#">none</a>
@@ -88,10 +108,6 @@
                 <div class="btn-group m-1 p-1">
                     {% block second_btn-group %}{% endblock second_btn-group %}
                 </div>
-                <form class="d-flex navbar-dark bg-dark">
-                    <input class="form-control me-3" type="search" placeholder="Что ищем?" aria-label="Что ищем?">
-                    <button class="btn btn-outline-light" type="submit">Поиск</button>
-                </form>
             </ul>
         </div>
     </div>

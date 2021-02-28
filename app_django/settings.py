@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+db_from_env = dj_database_url.config()
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,7 +27,7 @@ SECRET_KEY = 'fcol_+n%2i=d7*db5+ohls-!&!3*bav@h!2gm5zwi_do&y_akm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-HEROKU = False
+HEROKU = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -54,10 +57,8 @@ INSTALLED_APPS = [
     'app_react.apps.AppReactConfig',
     'app_web.apps.AppWebConfig',
     'app_wheather.apps.AppWheatherConfig',
-
     'app_movies.apps.AppMoviesConfig',
-
-    
+    'app_rational.apps.AppRationalConfig',
 ]
 
 MIDDLEWARE = [
@@ -100,12 +101,24 @@ WSGI_APPLICATION = 'app_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+if not HEROKU:
+    # Включить для DEVELOPMENT, отключить для PRODUCTION
+    DATABASES = {'default': {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': BASE_DIR / 'db.sqlite3',
+    }}
+else:
+    # Включить для PRODUCTION, отключить для DEVELOPMENT
+    DATABASES = {'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'HOST': 'ec2-52-50-171-4.eu-west-1.compute.amazonaws.com',
+    'NAME': 'deinthsv9addbq',    
+    'USER': 'mayhqhjnyukmmh',
+    'PORT': 5432,
+    'PASSWORD': '4e085cdc07df03952edd34624245b1a69894875064ca6795a977d8b0964bfdec'
+    }}
+
+
 
 
 # Password validation
@@ -140,7 +153,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -161,7 +173,7 @@ MEDIA_ROOT = Path(BASE_DIR, 'static/media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_UPLOAD_PATH = "uploads/ckeditor/"
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -203,7 +215,7 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
         # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
         # 'height': 291,
-        'width': '100%',      
+        'width': '100%',    
         'toolbar': 'Full',
         # 'filebrowserWindowHeight': 725,
         # 'filebrowserWindowWidth': 940,
