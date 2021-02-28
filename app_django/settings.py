@@ -27,7 +27,7 @@ SECRET_KEY = 'fcol_+n%2i=d7*db5+ohls-!&!3*bav@h!2gm5zwi_do&y_akm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-HEROKU = False
+HEROKU = True
 
 ALLOWED_HOSTS = ['*']
 
