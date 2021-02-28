@@ -27,7 +27,7 @@ SECRET_KEY = 'fcol_+n%2i=d7*db5+ohls-!&!3*bav@h!2gm5zwi_do&y_akm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-HEROKU = True
+HEROKU = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -123,9 +123,6 @@ DATABASES = {'default': {
 'ENGINE': 'django.db.backends.sqlite3',
 'NAME': BASE_DIR / 'db.sqlite3',
 }}
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
