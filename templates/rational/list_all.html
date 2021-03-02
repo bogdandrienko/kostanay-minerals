@@ -1,3 +1,6 @@
+
+
+{% load likes %}
 {% if rational %}
 <div class="row row-cols-1 row-cols-md-3 text-center">
     {% for LOOP in contacts %}
@@ -18,6 +21,17 @@
                 <div class="my-1 d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <small class="my-1 btn btn-sm btn-outline-dark text-link-dark">{{ LOOP.rational_autor_name }}</small>
+                        {% is_liked LOOP.id as is_liked_bool %}
+                        {% if is_liked_bool %}
+                            <p><i class="material-icons text-muted md-48">thumb_up</i></p>
+                        {% else %}
+                            {% is_disliked LOOP.id as is_disliked_bool %}
+                            {% if is_disliked_bool %}
+                                <p><i class="material-icons text-muted md-48">thumb_down</i></p>
+                            {% else %}
+                                <p><i class="material-icons text-muted md-48">live_help</i></p>
+                            {% endif %}
+                        {% endif %}
                         {% if 0 > LOOP.get_total_rating %}
                             <div class="m-sm-1 btn btn-sm btn-outline-danger text-link-danger">{{ LOOP.get_total_rating }}<sup class="text-muted">{{ LOOP.get_total_rating_value }}</sup></div>
                         {% else %}
