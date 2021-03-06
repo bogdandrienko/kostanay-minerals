@@ -21,7 +21,7 @@ def rational_list(request, category_slug=None):
             rational = RationalModel.objects.filter(rational_category=category_page).order_by('-rational_date_registrated')
         else:
             rational = RationalModel.objects.order_by('-rational_date_registrated')
-    paginator = Paginator(rational, 6)
+    paginator = Paginator(rational, 2)
     category = CategoryRationalModel.objects.order_by('-id')
     page = request.GET.get('page')
     try:
@@ -79,10 +79,17 @@ def rational_create(request):
         return redirect('login')
     if request.method == 'POST':
         RationalModel.objects.create(
+            rational_autor_name = User.objects.get(id=request.user.id),
+            rational_category = CategoryRationalModel.objects.get(category_name=request.POST['category_name']),
             rational_name = request.POST['rational_name'],
             rational_description = request.POST['rational_description'],
-            rational_category = CategoryRationalModel.objects.get(category_name=request.POST['category_name']),
-            rational_autor_name = User.objects.get(id=request.user.id)
+            rational_offering_members = request.POST['rational_offering_members'],
+            rational_conclusion = request.POST['rational_conclusion'],
+            rational_change_documentations = request.POST['rational_change_documentations'],
+            rational_responsible_members = request.POST['rational_responsible_members'],
+            rational_structure_from = request.POST['rational_structure_from'],
+            rational_place_innovation = request.POST['rational_place_innovation'],
+            rational_resolution = request.POST['rational_resolution'],
             )
         return redirect('rational')
     post_form= RationalCreateForm(request.POST)

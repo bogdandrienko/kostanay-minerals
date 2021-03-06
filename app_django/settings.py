@@ -170,27 +170,38 @@ else:
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(BASE_DIR, 'static/media')
 
-
-
 EMAIL_BACKEND           = 'django.core.mail.backends.smtp.EmailBackend'
+FROM_EMAIL              = 'bogdandrienko@gmail.com'
+EMAIL_ADMIN             = 'bogdandrienko@gmail.com'
+MAILCHIMP_API_KEY       = '6eaf466148abd2c002db65a1d08be7ce-us1'
+MAILCHIMP_DATA_CENTER   = 'us1'
+MAILCHIMP_EMAIL_LIST_ID = '36507b5dcf'
+
+Sendgrid_EMAIL_LIST_ID = '6eaf466148abd2c002db65a1d08be7ce'
+
+# if not HEROKU:
+#     # Включить для DEVELOPMENT, отключить для PRODUCTION
+# EMAIL_HOST              = 'smtp-pulse.com'
+# EMAIL_HOST_USER         = 'bogdandrienko@gmail.com'
+# EMAIL_HOST_PASSWORD     = 'aNJqk72mtKJtDfG'
+# EMAIL_PORT              = 587
+# EMAIL_USE_TLS           = True
+# EMAIL_USE_SSL           = False
+# else:
+#     # Включить для PRODUCTION, отключить для DEVELOPMENT
 EMAIL_HOST              = 'smtp.gmail.com'
 EMAIL_HOST_USER         = 'bogdandrienko@gmail.com'
 EMAIL_HOST_PASSWORD     = '87776357686cool'
-EMAIL_PORT              = 465
-EMAIL_USE_TLS           = False
-EMAIL_USE_SSL           = True
+EMAIL_PORT              = 587
+EMAIL_USE_TLS           = True
+EMAIL_USE_SSL           = False
 
-host: EMAIL_HOST
-port: EMAIL_PORT
-username: EMAIL_HOST_USER
-password: EMAIL_HOST_PASSWORD
-use_tls: EMAIL_USE_TLS
-use_ssl: EMAIL_USE_SSL
-
-FROM_EMAIL              = 'bogdandrienko@gmail.com'
-EMAIL_ADMIN             = 'bogdandrienko@gmail.com'
-
-
+host:       EMAIL_HOST
+port:       EMAIL_PORT
+username:   EMAIL_HOST_USER
+password:   EMAIL_HOST_PASSWORD
+use_tls:    EMAIL_USE_TLS
+use_ssl:    EMAIL_USE_SSL
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -198,8 +209,12 @@ CKEDITOR_UPLOAD_PATH = "uploads/ckeditor/"
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'skin': 'moono',
-        # 'skin': 'office2013',
+
+        # 'skin': 'kama',
+        # 'skin': 'moono',
+        # 'skin': 'moono-lisa',
+        'skin': 'moonocolor',
+
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
@@ -225,27 +240,44 @@ CKEDITOR_CONFIGS = {
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
             {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
             {'name': 'about', 'items': ['About']},
-            '/',  # put this to force next toolbar on new line
+            '/',
             {'name': 'yourcustomtools', 'items': [
-                # put the name of your editor.ui.addButton here
                 'Preview',
                 'Maximize',
-                'Youtube'
+                'Youtube',
             ]},
         ],
-        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
+
+        # 'toolbar': 'YourCustomToolbarConfig',
+        'toolbar': 'full',
+
         # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
-        # 'height': 291,
-        'width': '100%',    
-        'toolbar': 'Full',
-        # 'filebrowserWindowHeight': 725,
-        # 'filebrowserWindowWidth': 940,
-        # 'toolbarCanCollapse': True,
-        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        # 'toolbarGroups': [
+        # { 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] },
+        # { 'name': 'clipboard', 'groups': [ 'clipboard', 'undo' ] },
+        # { 'name': 'editing', 'groups': [ 'find', 'selection', 'spellchecker', 'editing' ] },
+        # { 'name': 'forms', 'groups': [ 'forms' ] },
+        # '/',
+        # { 'name': 'basicstyles', 'groups': [ 'basicstyles', 'cleanup' ] },
+        # { 'name': 'paragraph', 'groups': [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+        # { 'name': 'links', 'groups': [ 'links' ] },
+        # { 'name': 'insert', 'groups': [ 'insert' ] },
+        # '/',
+        # { 'name': 'styles', 'groups': [ 'styles' ] },
+        # { 'name': 'colors', 'groups': [ 'colors' ] },
+        # { 'name': 'tools', 'groups': [ 'tools' ] },
+        # { 'name': 'others', 'groups': [ 'others' ] },
+        # { 'name': 'about', 'groups': [ 'about' ] }
+        # ],
+
+        'height': '75',
+        'width': '100%',
+
+        'toolbarCanCollapse': True,
         'tabSpaces': 4,
+
         'extraPlugins': ','.join([
-            'uploadimage', # the upload image feature
-            # your extra plugins here
+            'uploadimage',
             'div',
             'autolink',
             'autoembed',
@@ -258,7 +290,7 @@ CKEDITOR_CONFIGS = {
             'dialog',
             'dialogui',
             'elementspath',
-            'youtube'
+            'youtube',
         ]),
     }
 }
