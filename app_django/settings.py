@@ -49,19 +49,20 @@ INSTALLED_APPS = [
     'crispy_forms',
     'app_rest_framework.apps.AppRestFrameworkConfig',
 
-    'app_accounts.apps.AppAccountsConfig',
+    'app_account.apps.AppAccountConfig',
     'app_bootstrap_examples.apps.AppBootstrapExamplesConfig',
     'app_ecommerse.apps.AppEcommerseConfig',
     'app_news.apps.AppNewsConfig',
     'app_react.apps.AppReactConfig',
-    'app_web.apps.AppWebConfig',
     'app_wheather.apps.AppWheatherConfig',
     'app_movies.apps.AppMoviesConfig',
     'app_rational.apps.AppRationalConfig',
     'app_email.apps.AppEmailConfig',
-    'app_contacts.apps.AppContactsConfig',
-    'app_documentations.apps.AppDocumentationsConfig',
-    'app_messages.apps.AppMessagesConfig',
+    'app_contact.apps.AppContactConfig',
+    'app_documentation.apps.AppDocumentationConfig',
+    'app_message.apps.AppMessageConfig',
+
+    'app_application.apps.AppApplicationConfig',
 ]
 
 MIDDLEWARE = [
@@ -177,13 +178,6 @@ FROM_EMAIL              = 'bogdandrienko@gmail.com'
 EMAIL_ADMIN             = 'bogdandrienko@gmail.com'
 # send_mail('subject', 'message', settings.EMAIL_HOST_USER, ['andrienko.1997@list.ru'], fail_silently=False)
 
-# google
-# EMAIL_HOST              = 'smtp.gmail.com'
-# EMAIL_HOST_USER         = 'bogdandrienko@gmail.com'
-# EMAIL_HOST_PASSWORD     = '87776357686cool'
-# EMAIL_PORT              = 587
-# EMAIL_USE_TLS           = True
-# EMAIL_USE_SSL           = False
 
 # yandex
 EMAIL_HOST              = 'smtp.yandex.ru'
