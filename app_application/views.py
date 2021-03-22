@@ -9,7 +9,7 @@ def list_module(request):
     }
     return render(request, 'app_application/list_module.html', context)
 
-def list_component(request, module_slug=None):     
+def list_component(request, module_slug=None):
     if module_slug != None:
         module = ApplicationModuleModel.objects.get(module_slug=module_slug)
         component = ApplicationComponentModel.objects.filter(component_Foreign=module).order_by('component_position')
