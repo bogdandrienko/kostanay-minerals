@@ -164,21 +164,11 @@ USE_TZ = True
 
 # django-corsheaders
 CORS_ALLOW_ALL_ORIGINS = False
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = [
-    "http://192.168.0.109:8000",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-]
 CORS_ALLOWED_ORIGINS  = [
     "http://192.168.0.109:8000",
     "http://localhost:8080",
     "http://127.0.0.1:8000",
 ]
-CORS_ALLOW_HEADERS = (
-        'Access-Control-Allow-Headers',
-        'Access-Control-Allow-Credentials',
-    )
 # CORS_ALLOWED_ORIGIN_REGEXES = [
 #     r"^https://\w+\.example\.com$",
 # ]
