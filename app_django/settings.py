@@ -163,7 +163,7 @@ USE_L10N = True
 USE_TZ = True
 
 # django-corsheaders
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
     'http://192.168.0.109:8000',
     'http://127.0.0.1:8000',
