@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'crispy_forms',
+    'rest_framework',
     'app_rest_framework.apps.AppRestFrameworkConfig',
     'app_account.apps.AppAccountConfig',
     'app_application.apps.AppApplicationConfig',
