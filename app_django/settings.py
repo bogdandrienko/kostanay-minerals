@@ -165,11 +165,10 @@ USE_TZ = True
 # django-corsheaders
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
-'http://www.bboard.ru',
+'http:/192.168.0.109:8000/',
 ]
 CORS_ORIGIN_REGEX_WНITELIST = []
-
-CORS_URLS_REGEX = r'^/react/api/.*$'
+CORS_URLS_REGEX = r'^.*$'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
