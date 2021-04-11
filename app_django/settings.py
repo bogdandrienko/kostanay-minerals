@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'crispy_forms',
     'rest_framework',
+    'corsheaders',
+
     'app_rest_framework.apps.AppRestFrameworkConfig',
     'app_account.apps.AppAccountConfig',
     'app_application.apps.AppApplicationConfig',
@@ -70,6 +72,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -157,6 +161,15 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# django-corsheaders
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = [
+'http://www.bboard.ru',
+]
+CORS_ORIGIN_REGEX_WНITELIST = []
+
+CORS_URLS_REGEX = r'^/react/api/.*$'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
